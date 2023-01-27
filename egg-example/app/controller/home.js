@@ -35,13 +35,19 @@ class HomeController extends Controller {
 
   //  app/controller/home.js
   // 获取用户信息
+  // async user() {
+  //   const { ctx } = this;
+  //   const { name, slogen } = await ctx.service.home.user();
+  //   ctx.body = {
+  //     name,
+  //     slogen,
+  //   };
+  // }
+
   async user() {
     const { ctx } = this;
-    const { name, slogen } = await ctx.service.home.user();
-    ctx.body = {
-      name,
-      slogen,
-    };
+    const result = await ctx.service.home.user();
+    ctx.body = result;
   }
 }
 
