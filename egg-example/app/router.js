@@ -9,4 +9,5 @@ module.exports = (app) => {
   // router.get("/user/:id", controller.home.user);
   router.post("/add", controller.home.add);
   router.get("/user", controller.home.user);
+  router.post("/add_user", controller.home.addUser); // 新增
 };

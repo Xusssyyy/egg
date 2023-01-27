@@ -30,5 +30,17 @@ class HomeService extends Service {
       return null;
     }
   }
+
+  // 新增
+  async addUser(name) {
+    const { ctx, app } = this;
+    try {
+      const result = await app.mysql.insert("list", { name }); // 给 list 表，新增一条数据
+      return result;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
 }
 module.exports = HomeService;
