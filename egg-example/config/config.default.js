@@ -18,7 +18,7 @@ module.exports = (appInfo) => {
   // add your middleware config here
   config.middleware = [];
 
-  // 白名单配置
+  // 白名单配置;
   config.security = {
     csrf: {
       enable: false,
@@ -26,15 +26,30 @@ module.exports = (appInfo) => {
     },
     domainWhiteList: ["*"], // 配置白名单
   };
+  //跨域处理
+  config.cors = {
+    origin: "*", // 允许所有跨域访问
+    credentials: true, // 允许 Cookie 跨域跨域
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH",
+  };
 
   // 将 .ejs 的后缀改成 .html 的后缀。
   config.view = {
     mapping: { ".html": "ejs" }, //左边写成.html后缀，会自动渲染.html文件
   };
 
+  // 自定义加密字符串
+  config.jwt = {
+    secret: "Nick",
+  };
+
+  config.multipart = {
+    mode: "file",
+  };
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    uploadDir: "app/public/upload",
   };
 
   exports.mysql = {
@@ -49,7 +64,7 @@ module.exports = (appInfo) => {
       // 密码
       password: "xsy20010402", // 初始化密码，没设置的可以不写
       // 数据库名
-      database: "test", // 我们新建的数据库名称
+      database: "juejue-cost", // 我们新建的数据库名称
     },
     // 是否加载到 app 上，默认开启
     app: true,
